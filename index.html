@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🌸 Chúc mừng 20/10 🥰</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet" />
+    <style>
+        /* ----- reset & nền chung ----- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            background: linear-gradient(145deg, #fce4ec, #f8bbd0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .app {
+            width: 100%;
+            height: 100%;
+            max-width: 480px;
+            max-height: 780px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 40px;
+            box-shadow: 0 20px 60px rgba(255, 80, 120, 0.3);
+            background: #fff5f7;
+        }
+
+        .screen {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 30px 24px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.9s cubic-bezier(0.34, 1.2, 0.64, 1);
+            will-change: transform;
+            background: #fff5f7;
+            overflow-y: auto;
+        }
+
+        .screen-garden {
+            transform: translateY(0);
+            z-index: 2;
+            background: linear-gradient(180deg, #fff0f3 0%, #ffe8ed 100%);
+        }
+
+        .screen-love {
+            transform: translateY(100%);
+            z-index: 1;
+            background: linear-gradient(145deg, #fce4ec, #f8bbd0);
+        }
+
+        .app.shift .screen-garden { transform: translateY(-100%); }
+        .app.shift .screen-love { transform: translateY(0); z-index: 3; }
+
+        /* ----- Màn hình 1 ----- */
+        .garden-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.6rem;
+            color: #ad1457;
+            margin-bottom: 4px;
+            text-shadow: 0 2px 12px #ff8a9e;
+        }
+        .garden-sub {
+            font-weight: 600;
+            background: #fce4ec;
+            padding: 4px 20px;
+            border-radius: 30px;
+            color: #7f3f4a;
+            margin-bottom: 14px;
+            font-size: 0.95rem;
+            text-align: center;
+        }
+
+        .pot {
+            font-size: 6rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin: 6px 0 10px;
+            filter: drop-shadow(0 8px 12px rgba(0,0,0,0.08));
+            user-select: none;
+        }
+        .pot:active { transform: scale(0.92); }
+
+        .status-text {
+            font-weight: 600;
+            color: #4a2c33;
+            background: #ffffffb0;
+            padding: 6px 18px;
+            border-radius: 40px;
+            margin-bottom: 12px;
+            font-size: 1rem;
+        }
+
+        .moisture-bar {
+            width: 80%;
+            height: 18px;
+            background: #f3d9e0;
+            border-radius: 20px;
+            margin: 8px auto 18px;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .moisture-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #4fc3f7, #29b6f6, #0288d1);
+            border-radius: 20px;
+            transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 0 12px #4fc3f780;
+        }
+
+        .btn-water {
+            background: #42a5f5;
+            border: none;
+            color: #fff;
+            padding: 14px 38px;
+            border-radius: 60px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 6px 0 #0d47a1;
+            transition: all 0.15s;
+            font-family: 'Quicksand', sans-serif;
+            margin-top: 2px;
+        }
+        .btn-water:hover { transform: scale(1.04); background: #1e88e5; }
+        .btn-water:active { transform: scale(0.95); box-shadow: 0 3px 0 #0d47a1; }
+        .btn-water:disabled { opacity: 0.5; transform: scale(1); box-shadow: 0 6px 0 #0d47a1; cursor: default; }
+
+        /* ----- Màn hình 2 ----- */
+        .love-icon {
+            font-size: 4.8rem;
+            animation: floatHeart 2s ease-in-out infinite;
+            display: block;
+            margin-bottom: 4px;
+        }
+        @keyframes floatHeart {
+            0% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-14px) scale(1.1); }
+            100% { transform: translateY(0) scale(1); }
+        }
+
+        .love-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: #c1275a;
+            margin: 2px 0 6px;
+            text-align: center;
+        }
+
+        .love-message {
+            background: #ffffffd0;
+            padding: 18px 22px;
+            border-radius: 40px;
+            font-weight: 600;
+            color: #632c3f;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            text-align: center;
+            max-width: 90%;
+            margin: 10px auto 16px;
+            box-shadow: 0 4px 20px #ffb0c0;
+        }
+
+        .btn-hug {
+            background: #ff6b8a;
+            border: none;
+            color: #fff;
+            padding: 14px 42px;
+            border-radius: 60px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 6px 0 #b33b56;
+            transition: 0.15s;
+            font-family: 'Quicksand', sans-serif;
+            margin-top: 8px;
+        }
+        .btn-hug:hover { transform: scale(1.06); background: #ff5a7c; }
+        .btn-hug:active { transform: scale(0.94); box-shadow: 0 3px 0 #b33b56; }
+
+        /* ----- mưa rơi ----- */
+        .rain-item {
+            position: fixed;
+            pointer-events: none;
+            z-index: 999;
+            font-size: 1.8rem;
+            animation: rainFall linear forwards;
+            opacity: 0.9;
+        }
+        @keyframes rainFall {
+            0% { transform: translateY(0) rotate(0deg) scale(0.6); opacity: 0.9; }
+            100% { transform: translateY(105vh) rotate(720deg) scale(1.2); opacity: 0; }
+        }
+
+        @media (max-width: 500px) {
+            .app { max-width: 100%; max-height: 100%; border-radius: 0; }
+            .screen { padding: 20px 16px 30px; }
+            .garden-title { font-size: 2.2rem; }
+            .pot { font-size: 5rem; }
+            .love-title { font-size: 2.4rem; }
+            .btn-water, .btn-hug { padding: 12px 28px; font-size: 1rem; }
+            .love-message { font-size: 0.95rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="app" id="app">
+
+    <!-- ===== MÀN HÌNH 1: KHU VƯỜN ===== -->
+    <div class="screen screen-garden" id="screenGarden">
+        <div class="garden-title">🌷 Vườn hoa tình bạn</div>
+        <div class="garden-sub">💧 Tưới nước để hoa nở nhé bạn dễ huông 💐</div>
+
+        <div class="pot" id="potArea">
+            <span id="flowerEmoji">🌱</span>
+        </div>
+
+        <div class="status-text" id="statusText">Hoa đang chờ nước... 🌱</div>
+
+        <div class="moisture-bar">
+            <div class="moisture-fill" id="moistureFill"></div>
+        </div>
+
+        <button class="btn-water" id="waterBtn">💧 Tưới nước</button>
+    </div>
+
+    <!-- ===== MÀN HÌNH 2: LỜI CHÚC ===== -->
+    <div class="screen screen-love" id="screenLove">
+        <span class="love-icon">🌸</span>
+        <div class="love-title">Chúc mừng 20/10!</div>
+        <div class="love-message">
+            Gửi bạn dễ huông 💐<br />
+            Nhân ngày Phụ nữ Việt Nam 20/10, chúc bạn luôn xinh đẹp rạng rỡ, vui vẻ mỗi ngày và gặp thật nhiều điều may mắn nha❤️.<br />
+        </div>
+        <button class="btn-hug" id="hugBtn">💞 Gửi ngàn yêu thương đến bà</button>
+    </div>
+
+</div>
+
+<script>
+    (function() {
+        const app = document.getElementById('app');
+        const flowerEmoji = document.getElementById('flowerEmoji');
+        const statusText = document.getElementById('statusText');
+        const moistureFill = document.getElementById('moistureFill');
+        const waterBtn = document.getElementById('waterBtn');
+        const potArea = document.getElementById('potArea');
+        const hugBtn = document.getElementById('hugBtn');
+
+        let moisture = 0;
+        const MAX = 100;
+        let isBloomed = false;
+
+        const states = [
+            { threshold: 0,   emoji: '🌱',    text: 'Hoa đang chờ nước... 🌱' },
+            { threshold: 20,  emoji: '🌿',    text: 'Chồi non nhú lên rồi 🌱' },
+            { threshold: 40,  emoji: '🌱🌷',  text: 'Đang ra nụ hoa 💕' },
+            { threshold: 60,  emoji: '🌷',    text: 'Nụ hoa hé mở! 🌸' },
+            { threshold: 80,  emoji: '🌷✨',  text: 'Sắp nở rồi! Thêm nước nữa 💧' },
+            { threshold: 100, emoji: '🌸🌺',  text: 'Hoa nở rực rỡ! ❤️' }
+        ];
+
+        function updateFlower() {
+            let current = states[0];
+            for (let i = states.length - 1; i >= 0; i--) {
+                if (moisture >= states[i].threshold) { current = states[i]; break; }
+            }
+            flowerEmoji.textContent = current.emoji;
+            statusText.textContent = current.text;
+            moistureFill.style.width = moisture + '%';
+        }
+
+        function addMoisture(amount) {
+            if (isBloomed) return;
+            moisture = Math.min(moisture + amount, MAX);
+            updateFlower();
+
+            createRain('💧', 6);
+
+            if (moisture >= MAX && !isBloomed) {
+                isBloomed = true;
+                waterBtn.disabled = true;
+                setTimeout(() => {
+                    app.classList.add('shift');
+                    createRain('❤️', 35);
+                    createRain('🌸', 25);
+                    createRain('✨', 18);
+                }, 500);
+            }
+        }
+
+        potArea.addEventListener('click', function() {
+            if (!isBloomed) {
+                addMoisture(12);
+                this.style.transform = 'scale(0.92)';
+                setTimeout(() => this.style.transform = 'scale(1)', 150);
+            }
+        });
+
+        waterBtn.addEventListener('click', function() {
+            if (!isBloomed) addMoisture(15);
+        });
+
+        hugBtn.addEventListener('click', function() {
+            createRain('💖', 40);
+            createRain('🥰', 20);
+            this.textContent = '❤️ Đã gửi yêu thương rồi nè!';
+            this.disabled = true;
+            this.style.opacity = '0.7';
+        });
+
+        function createRain(emoji, count) {
+            const body = document.body;
+            for (let i = 0; i < count; i++) {
+                const el = document.createElement('div');
+                el.className = 'rain-item';
+                el.textContent = emoji;
+                el.style.left = Math.random() * 100 + 'vw';
+                el.style.fontSize = (Math.random() * 1.8 + 1.2) + 'rem';
+                el.style.animationDuration = (Math.random() * 2.8 + 2.2) + 's';
+                el.style.animationDelay = (Math.random() * 1.6) + 's';
+                el.style.opacity = Math.random() * 0.6 + 0.5;
+                body.appendChild(el);
+                setTimeout(() => { if (el.parentNode) el.remove(); }, 5000);
+            }
+        }
+
+        updateFlower();
+        setTimeout(() => createRain('💧', 8), 300);
+    })();
+</script>
+</body>
+</html>
